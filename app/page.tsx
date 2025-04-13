@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Table, TableHead, TableRow, TableCell, TableBody } from "@/components/ui/table";
 
-// 👇 Add this type definition at the top
 type InventoryItem = {
   id: number;
   name: string;
@@ -15,7 +14,6 @@ type InventoryItem = {
   supplier: string;
 };
 
-// 👇 Explicitly type mockData
 const mockData: InventoryItem[] = [
   { id: 1, name: "Resistor 10k", quantity: 120, reorderPoint: 100, supplier: "ABC Electronics" },
   { id: 2, name: "Capacitor 100uF", quantity: 45, reorderPoint: 50, supplier: "XYZ Components" },
@@ -23,11 +21,9 @@ const mockData: InventoryItem[] = [
 ];
 
 export default function Dashboard() {
-  // 👇 Explicitly type useState
   const [inventory, setInventory] = useState<InventoryItem[]>([]);
 
   useEffect(() => {
-    // Load from backend (mocked for now)
     setInventory(mockData);
   }, []);
 
