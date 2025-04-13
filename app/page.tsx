@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -8,14 +6,22 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Table, TableHead, TableRow, TableCell, TableBody } from "@/components/ui/table";
 
-const mockData = [
+type InventoryItem = {
+  id: number;
+  name: string;
+  quantity: number;
+  reorderPoint: number;
+  supplier: string;
+};
+
+const mockData: InventoryItem[] = [
   { id: 1, name: "Resistor 10k", quantity: 120, reorderPoint: 100, supplier: "ABC Electronics" },
   { id: 2, name: "Capacitor 100uF", quantity: 45, reorderPoint: 50, supplier: "XYZ Components" },
   { id: 3, name: "Microcontroller ATmega328", quantity: 20, reorderPoint: 30, supplier: "MicroDev Inc." },
 ];
 
 export default function Dashboard() {
-  const [inventory, setInventory] = useState([]);
+  const [inventory, setInventory] = useState<InventoryItem[]>([]);
 
   useEffect(() => {
     // Load from backend (mocked for now)
